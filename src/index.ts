@@ -30,7 +30,7 @@ log(
 log(
   `${logAppend} If you wish to change the default behaviour, change "index.ts" file`,
   "banner"
-) ;
+);
 
 // fetchBhavCopy(`${currentYear}`, `OCT`);
 // fetchBhavForAMonth('2022', 'OCT');

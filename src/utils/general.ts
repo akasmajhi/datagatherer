@@ -42,7 +42,10 @@ export const deStructureURL = (
             return undefined;
           }
         }
-        log(`${logAppend} Badly formed fetchURL: [${fetchURL}] passed`, "error");
+        log(
+          `${logAppend} Badly formed fetchURL: [${fetchURL}] passed`,
+          "error"
+        );
         return undefined;
       case "BSE": // BSE specific implementation
         log(`${logAppend} Exchange: [${exchange}] Not Implemented`, `error`);
@@ -167,17 +170,25 @@ export const isMonthValid = (month: string | number): boolean => {
   }
 };
 /**
-    * For a given year, the month cannot be in future
-*/
+ * For a given year, the month cannot be in future
+ */
 export const isMonthInFuture = (year: string, mon: string) => {
-    const logAppend: string = `${moduleName}:isMonthInFuture`;
-    const monthIdx = MONTH_NAMES.findIndex(month => month === mon.toUpperCase() );
-    if((parseInt(year) === (new Date().getFullYear())) && (monthIdx > (new Date().getMonth()))){
-        log(`${logAppend} You cannot pass a future month [${mon}] for the current year: [${year}]!`, 'error');
-        return true;
-    }
-    return false;
-}
+  const logAppend: string = `${moduleName}:isMonthInFuture`;
+  const monthIdx = MONTH_NAMES.findIndex(
+    (month) => month === mon.toUpperCase()
+  );
+  if (
+    parseInt(year) === new Date().getFullYear() &&
+    monthIdx > new Date().getMonth()
+  ) {
+    log(
+      `${logAppend} You cannot pass a future month [${mon}] for the current year: [${year}]!`,
+      "error"
+    );
+    return true;
+  }
+  return false;
+};
 /**
  * Expects a year in the form of YYYY
  * Only string years are allowed.
@@ -219,8 +230,8 @@ export const composeFetchURL = (
     );
     return;
   }
-    if (isYearValid(year) && isMonthValid(month)){
-      return composeFetchURLForAMonth(year, month);
+  if (isYearValid(year) && isMonthValid(month)) {
+    return composeFetchURLForAMonth(year, month);
   } else {
     log(
       `Invalid parameter provided: ${year}. Permitted are year and month`,
