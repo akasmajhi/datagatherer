@@ -2,7 +2,8 @@ import * as path from "path";
 export const BASE_DIR = "/mnt/x/market";
 export const DATA_DIR = path.join(BASE_DIR, "NSE", "bhavcopy");
 export const BASE_URL_NSE = `https://www1.nseindia.com/content/historical/EQUITIES`;
-
+// Market data is not available till this cut-off time: 6.30 PM
+export const CUTOFF_TIME = 18 * 60 + 30;
 export const MONTH_NAMES = [
   "JAN",
   "FEB",

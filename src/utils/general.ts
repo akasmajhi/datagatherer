@@ -1,5 +1,10 @@
 import * as path from "path";
-import { BASE_URL_NSE, MONTH_NAMES, NSE_HOLIDAYS_2022_STR } from "../constants";
+import {
+  BASE_URL_NSE,
+  CUTOFF_TIME,
+  MONTH_NAMES,
+  NSE_HOLIDAYS_2022_STR,
+} from "../constants";
 import logger from "./logger";
 import { destructuredURL } from "../types";
 
@@ -128,9 +133,19 @@ export const composeFetchURLForAMonth = (
   log(`${logAppend} daysInMonth: [${daysInMonth}]`, "debug");
   for (let day = 1; day <= daysInMonth; day++) {
     let fetchURL = "";
-    // DONE: what if the current date is in future
-    if (new Date(`${year}-${month}-${dayStr}`) > currentDate) return fetchURLs;
     dayStr = day < 10 ? `0${day}` : `${day}`;
+    // DONE: what if the current date is in future
+    log(
+      `${logAppend} - Compare: [${new Date(
+        `${year}-${month}-${dayStr}`
+      )}] and [${currentDate}]`,
+      `error`
+    );
+    if (new Date(`${year}-${month}-${dayStr}`) > currentDate ) {
+      log(`${logAppend} Do Not Process: [${year}, ${month}, ${day}]`, `banner`);
+      log(`${logAppend} Do Not Process: [${currentDate}`, `banner`);
+      return fetchURLs;
+    }
     if (!tradingHoliday(year, month, day)) {
       // Is this a NSE holiday?
       fetchURL =
@@ -140,6 +155,7 @@ export const composeFetchURLForAMonth = (
         `composeFetchURLForAMonth: The URL composed is: [${fetchURL}]`,
         `info`
       );
+      log(`${logAppend}: [${fetchURL}]`, `banner`);
       fetchURLs.push(fetchURL);
     }
   }
@@ -239,4 +255,24 @@ export const composeFetchURL = (
     );
     return false;
   }
+};
+/**
+ * Checks if the date is today's date and
+ * time is less than 1830
+ */
+export const todaysTimeCheck = (checkDate: Date): boolean => {
+  const logAppend: string = `${moduleName}:todaysTimeCheck:`;
+  const today = new Date();
+  const todayMinutesElapsed = 60 * today.getHours() + today.getMinutes();
+  if (
+    checkDate.toLocaleString() === today.toLocaleString() &&
+    todayMinutesElapsed < CUTOFF_TIME
+  ) {
+    log(
+      `${logAppend} You are trying to fetch the market data for date: [${checkDate.toLocaleString()}] before availability`,
+      `banner`
+    );
+    return true;
+  }
+  return false;
 };

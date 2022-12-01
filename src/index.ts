@@ -33,7 +33,7 @@ log(
 );
 
 // fetchBhavCopy(`${currentYear}`, `OCT`);
-// fetchBhavForAMonth('2022', 'OCT');
+// fetchBhavForAMonth('2022', 'NOV' );
 // fetchBhavCopy(`${currentYear}`, `${currentMonth}`, `${dayOfMonthStr}`);
 // fetchBhavCopy(`${currentYear}`, `${currentMonth}`, `11`);
 fetchBhavForAMonth(`${currentYear}`, `${currentMonth}`);
