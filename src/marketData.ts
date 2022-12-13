@@ -33,7 +33,6 @@ export const fetchBhavForAMonth = (year: string, month: string) => {
     `${logAppend} Fetching bhav copy for month [${month}] of [${year}]`,
     "info"
   );
-
   // Is the year and month valid?
   if (
     !isYearValid(year) ||
@@ -64,6 +63,7 @@ export const fetchBhavForAMonth = (year: string, month: string) => {
     );
   });
 };
+
 /**
  *
  * @param {*} year
@@ -128,6 +128,7 @@ export const fetchBhavCopy = (year: string, mon: string, dayNumber: string) => {
     fetchDataFromURL(fetchURL);
   }
 };
+
 /**
  *
  * @param {String} fetchURL - The URL of the (ZIP) file to be fetched
@@ -211,6 +212,7 @@ const fetchDataFromURL = async (fetchURL: string) => {
       log(`${logAppend}: Full error text: ${error}`), "error";
     });
 };
+
 /*
 const fetchBhavForAYear = year => {
     log(`Going to fetch bhav for the year ${year}`, 'debug');

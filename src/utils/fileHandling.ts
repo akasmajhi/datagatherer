@@ -6,7 +6,6 @@ import {
 } from "fs";
 import * as path from "path";
 import * as unzipper from "unzipper";
-
 import logger from "./logger";
 const log = logger.log;
 const moduleName: string = __filename.slice(
@@ -47,6 +46,7 @@ const deleteZipFile = (zipFileName: string) => {
     log(`${logAppend} Error Encountered [${err}]`, "error");
   }
 };
+
 /**
  *
  */
@@ -63,7 +63,6 @@ export const unzipFile = (DATA_DIR: string, zipFileName: string) => {
     .on("entry", (entry) => {
       var fileName = entry.path;
       var type = entry.type; // 'Directory' or 'File'
-
       if (/\/$/.test(fileName)) {
         return;
       }

@@ -13,6 +13,7 @@ const moduleName: string = __filename.slice(
   __dirname.length + 1,
   __filename.length - 3
 );
+
 /**
  *
  * @param {String} fetchURL - returns the different parts of the URL
@@ -141,7 +142,7 @@ export const composeFetchURLForAMonth = (
       )}] and [${currentDate}]`,
       `error`
     );
-    if (new Date(`${year}-${month}-${dayStr}`) > currentDate ) {
+    if (new Date(`${year}-${month}-${dayStr}`) > currentDate) {
       log(`${logAppend} Do Not Process: [${year}, ${month}, ${day}]`, `banner`);
       log(`${logAppend} Do Not Process: [${currentDate}`, `banner`);
       return fetchURLs;
@@ -161,13 +162,13 @@ export const composeFetchURLForAMonth = (
   }
   return fetchURLs;
 };
+
 /**
  * Expects a month in the form of MON
  * Only string months are allowed.
  * The length needs to be 3 chars.
  * Valid months are defined the staic array as above
  */
-
 export const isMonthValid = (month: string | number): boolean => {
   const logAppend: string = `${moduleName}:isMonthValid:`;
   if (month && typeof month === "string") {
@@ -185,6 +186,7 @@ export const isMonthValid = (month: string | number): boolean => {
     return false;
   }
 };
+
 /**
  * For a given year, the month cannot be in future
  */
@@ -205,6 +207,7 @@ export const isMonthInFuture = (year: string, mon: string) => {
   }
   return false;
 };
+
 /**
  * Expects a year in the form of YYYY
  * Only string years are allowed.
@@ -226,6 +229,7 @@ export const isYearValid = (year: string | number): boolean => {
   }
   return false;
 };
+
 /**
  * @param {String} year - The duration for which the URLs are required
  * @param {String} args - The value of the duration. Year: any four-digit number.
@@ -256,6 +260,7 @@ export const composeFetchURL = (
     return false;
   }
 };
+
 /**
  * Checks if the date is today's date and
  * time is less than 1830
