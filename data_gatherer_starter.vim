@@ -17,12 +17,13 @@ badd +1 ~/source/paisa/datagatherer/package.json
 badd +7 ~/source/paisa/datagatherer/src/index.ts
 badd +14 ~/source/paisa/datagatherer/src/marketData.ts
 badd +21 ~/source/paisa/datagatherer/src/utils/fileHandling.ts
-badd +32 ~/source/paisa/datagatherer/src/utils/general.ts
+badd +1 ~/source/paisa/datagatherer/src/utils/general.ts
 badd +3 ~/source/paisa/datagatherer/src/types.ts
 badd +4 ~/source/paisa/datagatherer/src/constants.ts
+badd +1 NvimTree_1
 argglobal
 %argdel
-edit ~/source/paisa/datagatherer/src/utils/general.ts
+edit ~/source/paisa/datagatherer/src/index.ts
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -39,22 +40,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 104 + 104) / 209)
+exe 'vert 2resize ' . ((&columns * 104 + 104) / 209)
 argglobal
-enew
-file NvimTree_1
-balt ~/source/paisa/datagatherer/src/utils/general.ts
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-wincmd w
-argglobal
-balt ~/source/paisa/datagatherer/src/types.ts
+balt ~/source/paisa/datagatherer/src/marketData.ts
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -65,15 +54,38 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 25 - ((24 * winheight(0) + 26) / 53)
+let s:l = 7 - ((6 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 25
-normal! 045|
+keepjumps 7
+normal! 0
 wincmd w
-2wincmd w
-wincmd =
+argglobal
+if bufexists(fnamemodify("~/source/paisa/datagatherer/src/utils/fileHandling.ts", ":p")) | buffer ~/source/paisa/datagatherer/src/utils/fileHandling.ts | else | edit ~/source/paisa/datagatherer/src/utils/fileHandling.ts | endif
+if &buftype ==# 'terminal'
+  silent file ~/source/paisa/datagatherer/src/utils/fileHandling.ts
+endif
+balt ~/source/paisa/datagatherer/src/utils/general.ts
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 21 - ((20 * winheight(0) + 26) / 53)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 21
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 104 + 104) / 209)
+exe 'vert 2resize ' . ((&columns * 104 + 104) / 209)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
