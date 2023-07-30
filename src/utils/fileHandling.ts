@@ -36,15 +36,20 @@ export const isFileExisting = (fileNameWithPath: string): boolean => {
 /**
  * deletes the ZIP file with the supplied name
  * @param {String} zipFileName - The zip file to be deleted.
+ * @chane: Mac/Apple has a unique behaviour WRT download of ZIP
+ * ZIP files are automatically unzipped and ZIP deleted
+ *
  */
 const deleteZipFile = (zipFileName: string) => {
-  const logAppend: string = `${moduleName}:deleteZipFile:`;
-  log(`${logAppend} Going to delete file: [${zipFileName}]`, "debug");
-  try {
-    unlinkSync(zipFileName);
-  } catch (err) {
-    log(`${logAppend} Error Encountered [${err}]`, "error");
-  }
+    const logAppend: string = `${moduleName}:deleteZipFile:`;
+    log(`${logAppend} Going to delete file: [${zipFileName}]`, "debug");
+    if (existsSync(zipFileName)) {
+        try {
+            unlinkSync(zipFileName);
+        } catch (err) {
+            log(`${logAppend} Error Encountered [${err}]`, "error");
+        }
+    }
 };
 
 /**
