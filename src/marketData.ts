@@ -163,6 +163,15 @@ const fetchDataFromURL = async (fetchURL: string) => {
     log(`${logAppend} Invalid month: '${month}' is passed`, "error");
     return null;
   }
+  // If date is today and time is not yet 7 PM
+  // do not fetch the file
+  if (new Date().getDate() == parseInt(day) && new Date().getHours() < 18) {
+    log(
+      `${logAppend}: Fetching for today [${day}-${month}-${year}] but before 6 PM. Discarding Fetch!`,
+      "error"
+    );
+    return null;
+  }
   if (
     isFileExisting(
       path.join(DATA_DIR, fileName.substring(0, fileName.length - 4))
@@ -173,7 +182,7 @@ const fetchDataFromURL = async (fetchURL: string) => {
     `${logAppend}: file: [${path.join(
       DATA_DIR,
       fileName.substring(0, fileName.length - 4)
-    )}] Does not exist. Fetching now.`,
+    )}] Does not exist. fetching now.`,
     "info"
   );
   return fetch(fetchURL, {
