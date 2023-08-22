@@ -24,7 +24,7 @@ export default class Logging {
   static debug = (args: string) => {
     console.log(
       chalk.white(`[${new Date().toLocaleString()}] [debug] `),
-      typeof args === "string" ? chalk.whiteBright(args) : args
+      typeof args === "string" ? chalk.dim(args) : args
     );
   };
   static error = (args: string) => {

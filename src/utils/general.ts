@@ -136,12 +136,6 @@ export const composeFetchURLForAMonth = (
     let fetchURL = "";
     dayStr = day < 10 ? `0${day}` : `${day}`;
     // DONE: what if the current date is in future
-    log(
-      `${logAppend} - Compare: [${new Date(
-        `${year}-${month}-${dayStr}`
-      )}] and [${currentDate}]`,
-      `error`
-    );
     if (new Date(`${year}-${month}-${dayStr}`) > currentDate) {
       log(`${logAppend} Do Not Process: [${year}, ${month}, ${day}]`, `banner`);
       log(`${logAppend} Do Not Process: [${currentDate}`, `banner`);
