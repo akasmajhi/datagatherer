@@ -25,6 +25,29 @@ const moduleName: string = __filename.slice(
 );
 
 /**
+ * Fetches the indices for a month
+ */
+export const fetchIndicesForAMonth = (year: string, month: string) => {
+  const logAppend: string = `${moduleName}:fetchIndicesForAMonth`;
+  log(
+    `${logAppend} Fetching indices for month [${month}] of [${year}]`,
+    "info"
+  );
+  // Is the year and month valid?
+  if (
+    !isYearValid(year) ||
+    !isMonthValid(month) ||
+    isMonthInFuture(year, month)
+  ) {
+    log(
+      `${logAppend} Invalid date passed! Check year: [${year}] and month: [${month}]`,
+      `error`
+    );
+    return false;
+  }
+    return null;
+}
+/**
  * Fetches the bhav copy for a month
  */
 export const fetchBhavForAMonth = (year: string, month: string) => {

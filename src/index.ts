@@ -1,5 +1,5 @@
 // import {fetchBhavCopy} from './marketData';
-import { fetchBhavForAMonth } from "./marketData";
+import { fetchBhavForAMonth, fetchIndicesForAMonth } from "./marketData";
 import { MONTH_NAMES } from "./constants";
 
 import logger from "./utils/logger";
@@ -37,3 +37,4 @@ log(
 // fetchBhavCopy(`${currentYear}`, `${currentMonth}`, `${dayOfMonthStr}`);
 // fetchBhavCopy(`${currentYear}`, `${currentMonth}`, `11`);
 fetchBhavForAMonth(`${currentYear}`, `${currentMonth}`);
+fetchIndicesForAMonth(`${currentYear}`, `${currentMonth}`);
