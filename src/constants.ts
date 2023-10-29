@@ -1,5 +1,5 @@
 import * as path from "path";
-export const BASE_DIR = "/mnt/x/market";
+export const BASE_DIR = "/home/akasmajhi/data";
 export const DATA_DIR = path.join(BASE_DIR, "NSE", "bhavcopy");
 export const INDICES_DATA_DIR = path.join(BASE_DIR, "NSE", "indices");
 // export const BASE_URL_NSE = `https://www1.nseindia.com/content/historical/EQUITIES`;

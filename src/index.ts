@@ -33,8 +33,8 @@ log(
 );
 
 // fetchBhavCopy(`${currentYear}`, `OCT`);
-// fetchBhavForAMonth('2023', 'MAY' );
+fetchBhavForAMonth('2023', 'APR' );
 // fetchBhavCopy(`${currentYear}`, `${currentMonth}`, `${dayOfMonthStr}`);
 // fetchBhavCopy(`${currentYear}`, `${currentMonth}`, `11`);
-fetchBhavForAMonth(`${currentYear}`, `${currentMonth}`);
-fetchIndicesForAMonth(`${currentYear}`, `${currentMonth}`);
+// fetchBhavForAMonth(`${currentYear}`, `${currentMonth}`);
+// fetchIndicesForAMonth(`${currentYear}`, `${currentMonth}`);
