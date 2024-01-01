@@ -1,4 +1,4 @@
-// import {fetchBhavCopy} from './marketData';
+import {fetchBhavCopy} from './marketData';
 import { fetchBhavForAMonth, fetchIndicesForAMonth } from "./marketData";
 import { MONTH_NAMES } from "./constants";
 
@@ -33,8 +33,9 @@ log(
 );
 
 // fetchBhavCopy(`${currentYear}`, `OCT`);
-fetchBhavForAMonth('2023', 'APR' );
+// fetchBhavForAMonth('2022', 'DEC' );
 // fetchBhavCopy(`${currentYear}`, `${currentMonth}`, `${dayOfMonthStr}`);
 // fetchBhavCopy(`${currentYear}`, `${currentMonth}`, `11`);
-// fetchBhavForAMonth(`${currentYear}`, `${currentMonth}`);
+// fetchBhavCopy(`2023`, `SEP`, `29`);
+fetchBhavForAMonth(`${currentYear}`, `${currentMonth}`);
 // fetchIndicesForAMonth(`${currentYear}`, `${currentMonth}`);

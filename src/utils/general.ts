@@ -4,6 +4,7 @@ import {
   CUTOFF_TIME,
   MONTH_NAMES,
   NSE_HOLIDAYS_2023_STR,
+  NSE_HOLIDAYS_2024_STR,
 } from "../constants";
 import logger from "./logger";
 import { destructuredURL } from "../types";
@@ -97,7 +98,7 @@ export const tradingHoliday = (
   // (Number(day) && (Number(day) < 10) ) ? _day = `0${day}` : _day = day;
   const tradingDayStr = `${_day}-${month}-${year}`;
   log(`${logAppend} Trading day composed: [${tradingDayStr}]`, `debug`);
-  if (NSE_HOLIDAYS_2023_STR.includes(tradingDayStr)) {
+  if (NSE_HOLIDAYS_2024_STR.includes(tradingDayStr)) {
     log(`${logAppend} [${tradingDayStr}]: is a holiday`, `debug`);
     return true;
   }

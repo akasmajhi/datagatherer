@@ -69,5 +69,22 @@ export const NSE_HOLIDAYS_2023_STR = [
   "25-DEC-2023",
 ];
 
+export const NSE_HOLIDAYS_2024_STR = [
+  "26-JAN-2024",
+  "08-MAR-2024",
+  "25-MAR-2024",
+  "29-MAR-2024",
+  "11-APR-2024",
+  "17-APR-2024",
+  "01-MAY-2024",
+  "17-JUN-2024",
+  "17-JUL-2024",
+  "15-AUG-2024",
+  "02-OCT-2024",
+  "01-NOV-2024",
+  "15-NOV-2024",
+  "25-DEC-2024",
+];
+
 export const BHAV_POST_URL = "http://127.0.0.1:13333/api/bhav/";
 export const DAILY_BHAV_URL = "http://127.0.0.1:13333/api/dailybhav/";
